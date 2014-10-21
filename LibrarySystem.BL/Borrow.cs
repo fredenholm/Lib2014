@@ -173,6 +173,16 @@ namespace LibrarySystem.BL
         {
             LibraryDataAccess.RenewLoan(PersonId, Barcode);
         }
+
+        public static void RemoveBorrow(string barcode)
+        {
+            LibraryDataAccess.RemoveLoan(barcode);
+        }
+        public static void ReturnBorrow(string ISBN)
+        {
+            string barcode = LibraryDataAccess.getBarcodeFromISBN(ISBN);
+            RemoveBorrow(barcode);
+        }
       
         #endregion
         }

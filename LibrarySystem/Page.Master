@@ -27,6 +27,9 @@
                     <li><a href="Books.aspx">Books</a></li>
                     <li><a href="Author.aspx">Author</a></li>
                     <li ><a href="Borrowers.aspx">Account</a></li>
+                    <li id="AdminBooks" runat="server"><a href="AdminBooks.aspx">AdminBooks</a></li>
+                    <li id="AdminAuthor" runat="server"><a href="AdminAuthor.aspx">AdminAuthor</a></li>
+                    <li id="AdminBorrower" runat="server"><a href="AdminBorrowers.aspx">AdminBorrower</a></li>
                 </ul>
             </div>
             <div class="body2">

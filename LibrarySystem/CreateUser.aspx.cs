@@ -19,6 +19,7 @@ namespace LibrarySystem
         protected void createBtn_Click(object sender, EventArgs e)
         {
             int CategoryId;
+            bool isAdmin;
 
             if(PersonId.Text.Length > 0 && username.Text.Length > 0 && password.Text.Length > 0 && email.Text.Length > 0)
             {
@@ -26,7 +27,15 @@ namespace LibrarySystem
                 {
                     CategoryId = dropdownlist.SelectedIndex + 1;
                     BL.Borrower.CreateBorrower(PersonId.Text, FN.Text, LN.Text, address.Text, Telno.Text, CategoryId);
-                    BL.Usr.CreateUser(PersonId.Text, username.Text, password.Text, email.Text, 0);
+                    if(CategoryId == 2)
+                    {
+                        isAdmin = true;
+                    }
+                    else
+                    {
+                        isAdmin = false;
+                    }
+                    BL.Usr.CreateUser(PersonId.Text, username.Text, password.Text, email.Text, isAdmin);
                     Response.Redirect("AdminBorrowers.aspx");
                 }
                 else

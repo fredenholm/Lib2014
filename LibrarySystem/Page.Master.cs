@@ -12,6 +12,19 @@ namespace LibrarySystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string hej = Session["Username"] as string;
+            if (Session["Username"]!= null && (Usr.getUsrRole(Session["Username"] as string) == true))
+            {
+                AdminBooks.Visible = true;
+                AdminAuthor.Visible = true;
+                AdminBorrower.Visible = true;
+            }
+            else
+            {
+                AdminBooks.Visible = false;
+                AdminAuthor.Visible = false;
+                AdminBorrower.Visible = false;
+            }
 
         }
 

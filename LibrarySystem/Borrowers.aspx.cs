@@ -55,7 +55,9 @@ namespace LibrarySystem
 
         protected void ReturnBook_Command(object sender, CommandEventArgs e)
         {
-
+            Session["barcode"] = e.CommandArgument;
+            Borrow.RemoveBorrow(Session["barcode"] as string);
+            Response.Redirect("Borrowers.aspx");
         }
     }
 }

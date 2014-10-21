@@ -621,7 +621,7 @@ namespace LibrarySystem.DAL
                 {
                     number = (int)dar["COUNT"];
                     dar.Close();
-                    if (number > 1)
+                    if (number >= 1)
                     {
                         for (int i = 1; i <= (number); i++)
                         {
@@ -725,7 +725,7 @@ namespace LibrarySystem.DAL
                 {
                     number = (int)dar["COUNT"];
                     dar.Close();
-                    if(number > 1)
+                    if(number >= 1)
                     {
                         for(int i=1;i<=(number);i++)
                         {
@@ -837,7 +837,7 @@ namespace LibrarySystem.DAL
 
             return Person;
         }
-        public static void createUser(string personId, string username, string password, string email, int isadmin)
+        public static void createUser(string personId, string username, string password, string email, bool isadmin)
         {
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
@@ -1104,6 +1104,72 @@ namespace LibrarySystem.DAL
             {
                 con.Close();
             }
+        }
+        public static void RemoveLoan(string barcode)
+        {
+            string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("DELETE FROM BORROW WHERE Barcode='" + barcode + "'", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static string getBarcodeFromISBN(string ISBN)
+        {
+            string barcode;
+            string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT Barcode FROM COPY WHERE ISBN = '" + ISBN + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                barcode = dar["Barcode"] as string;
+            }
+            catch(Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return barcode;
+        }
+        public static bool getUserRole(string username)
+        {
+            bool Role = false;
+            string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT USR.Isadmin FROM USR WHERE Username ='" + username + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    Role = (bool)dar["Isadmin"];
+                }
+            }
+            catch(Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return Role;
         }
     }
 }

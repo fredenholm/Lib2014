@@ -106,7 +106,7 @@ namespace LibrarySystem.BL
             }
             return results;
         }
-        public static void CreateUser(string PersonId, string Username, string password, string email, int isAdmin)
+        public static void CreateUser(string PersonId, string Username, string password, string email, bool isAdmin)
         {
             LibraryDataAccess.createUser(PersonId, Username, password, email, isAdmin);
         }
@@ -124,6 +124,11 @@ namespace LibrarySystem.BL
         {
             String UsrName = LibraryDataAccess.PasswordMatch(Username, Password);
             return UsrName;
+        }
+        public static bool getUsrRole(string Username)
+        {
+            bool role = LibraryDataAccess.getUserRole(Username);
+            return role;
         }
         #endregion  //Public methods
     }  //End Class
