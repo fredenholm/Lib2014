@@ -9,6 +9,7 @@ namespace LibrarySystem.DTO
     [Serializable]
     public class CopyDTO
     {
+        #region constructors
         public CopyDTO()
         {
             this.loadstatus = LoadStatus.Initialized;
@@ -18,14 +19,15 @@ namespace LibrarySystem.DTO
         {
             this.loadstatus = dto.loadstatus;
             Barcode = dto.Barcode;
-            location = dto.location;
+            Location = dto.Location;
             StatusId = dto.StatusId;
             ISBN = dto.ISBN;
         }
+        #endregion
 
         public LoadStatus loadstatus;
         public string Barcode;
-        public string location = null;
+        public string Location = null;
         public int StatusId;
         public string ISBN;
     }

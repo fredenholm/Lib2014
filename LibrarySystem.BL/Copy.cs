@@ -40,13 +40,14 @@ namespace LibrarySystem.BL
             }
             set { _CopyDTO.Barcode = value; }
         }
-        public string location
+        public string Location
         {
             get
             {
                 Load();
-                return _CopyDTO.location; }
-            set { _CopyDTO.location = value; }
+                return _CopyDTO.Location;
+            }
+            set { _CopyDTO.Location = value; }
         }
         public int StatusId 
         {
@@ -88,12 +89,28 @@ namespace LibrarySystem.BL
         #endregion /
 
         #region Public methods
-        public static List<CopyDTO> getallcopys(string ISBN)
+        public static List<Copy> getallcopys(string ISBN)
         {
-            List<CopyDTO> dotlist = null;
-            dotlist = LibraryDataAccess.getCopyByISBN(ISBN);
-            return dotlist;
+            List<CopyDTO> dtolist = null;
+            dtolist = LibraryDataAccess.getCopyByISBN(ISBN);
+            List<Copy> results = new List<Copy>();
+            foreach (CopyDTO dto in dtolist)
+            {
+                Copy item = new Copy(dto);
+                results.Add(item);
+            }
+            return results;
 
+        }
+        public static void createCopy(string Barcode, string Location, int StatusId, string ISBN)
+        {
+            LibraryDataAccess.createCopy(Barcode, Location, StatusId, ISBN);
+        }
+        public static int getStatusId(string statusDrop)
+        {
+            int statusId;
+            statusId = LibraryDataAccess.getStatusId(statusDrop);
+            return statusId;
         }
         #endregion
     }

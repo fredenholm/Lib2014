@@ -22,6 +22,51 @@ namespace LibrarySystem {
         protected global::System.Web.UI.WebControls.Label BookTitle;
         
         /// <summary>
+        /// ISBNLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ISBNLabel;
+        
+        /// <summary>
+        /// barcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox barcode;
+        
+        /// <summary>
+        /// location control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox location;
+        
+        /// <summary>
+        /// statusDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList statusDropDown;
+        
+        /// <summary>
+        /// errorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorLabel;
+        
+        /// <summary>
         /// Addbutton control.
         /// </summary>
         /// <remarks>
@@ -40,12 +85,12 @@ namespace LibrarySystem {
         protected global::System.Web.UI.WebControls.Repeater rptbooks;
         
         /// <summary>
-        /// Button1 control.
+        /// cancelBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button cancelBtn;
     }
 }

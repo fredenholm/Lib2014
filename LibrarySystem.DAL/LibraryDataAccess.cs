@@ -1132,17 +1132,17 @@ namespace LibrarySystem.DAL
             CopyDTO dto = new CopyDTO();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Copy WHERE Barcode = '" + barcode + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM COPY WHERE Barcode = '" + barcode + "'", con);
             try
             {
                 con.Open();
                 SqlDataReader dar = cmd.ExecuteReader();
                 if (dar.Read())
                 {
-                    dto.ISBN = dar["ISBN"] as string;
                     dto.Barcode = dar["Barcode"] as string;
-                    dto.location = dar["location"] as string;
+                    dto.Location = dar["Location"] as string;
                     dto.StatusId = (int)dar["StatusId"];
+                    dto.ISBN = dar["ISBN"] as string;
                 }
             }
             catch (Exception er)
@@ -1153,6 +1153,7 @@ namespace LibrarySystem.DAL
             {
                 con.Close();
             }
+            return dto;
         }
         public static string getBarcodeFromISBN(string ISBN)
         {
@@ -1184,7 +1185,7 @@ namespace LibrarySystem.DAL
             //Connect to the database and read all authors
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM BORROWER", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM BORROW", con);
             try
             {
                 con.Open();
@@ -1192,10 +1193,10 @@ namespace LibrarySystem.DAL
                 while (dar.Read())
                 {
                     CopyDTO dto = new CopyDTO();
-                    dto.ISBN = dar["ISBN"] as string;
                     dto.Barcode = dar["Barcode"] as string;
-                    dto.location = dar["location"] as string;
+                    dto.Location = dar["Location"] as string;
                     dto.StatusId = (int)dar["StatusId"];
+                    dto.ISBN = dar["ISBN"] as string;
                     dto.loadstatus = LoadStatus.Ghost;  //Since we are not retrieving the isbn-number list
                     CopyDTOlist.Add(dto);
                 }
@@ -1247,13 +1248,13 @@ namespace LibrarySystem.DAL
             {
                 con.Open();
                 SqlDataReader dar = cmd.ExecuteReader();
-                if (dar.Read())
+                while (dar.Read())
                 {
                     CopyDTO dto = new CopyDTO();
-                    dto.ISBN = dar["ISBN"] as string;
                     dto.Barcode = dar["Barcode"] as string;
-                    dto.location = dar["location"] as string;
+                    dto.Location = dar["Location"] as string;
                     dto.StatusId = (int)dar["StatusId"];
+                    dto.ISBN = dar["ISBN"] as string;
                     dtoCopylist.Add(dto);
                 }
             }
@@ -1266,6 +1267,50 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
             return dtoCopylist;
+        }
+        public static void createCopy(string Barcode, string Location, int StatusId, string ISBN)
+        {
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [COPY]([Barcode],[Location],[StatusId],[ISBN])VALUES('" + Barcode + "','" + Location + "','" + StatusId + "','" + ISBN + "')", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static int getStatusId(string statusDrop)
+        {
+            int status = 0;
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT statusId FROM STATUS WHERE Status = '" + statusDrop + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if(dar.Read())
+                {
+                    status = (int)dar["statusid"];
+                }
+            }
+            catch(Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return status;
         }
     }
 }
