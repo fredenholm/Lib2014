@@ -1,0 +1,123 @@
+﻿
+
+input.Btn-style {
+    border: 1px solid #bbb;
+    float: right;
+    margin: 10px;
+    padding: 5px;
+}
+
+.header {
+    margin-right: 60px;
+    margin-left: 60px;
+    background-color: #c2bdbd;
+}
+.alignCenter{
+    margin-left:40%;
+    margin-right:40%;
+    width:20%;
+}
+.alignRightlaberl{
+    float:right
+}
+
+
+.body2 {
+    background-color: #c2bdbd;
+    float: right;
+    margin-top: 6px;
+    margin-left: auto;
+    width: 91%;
+    overflow:auto;
+    max-height: 500px;
+}
+.contetoverflow{
+    overflow:inherit;
+    max-height:100%;
+}
+
+.body {
+    background-color: #e9e5e5;
+}
+
+.navbar {
+    width: 8%;
+    float: left;
+    background-color: #c2bdbd;
+    margin-top: 6px;
+    min-height: 500px;
+}
+
+.wrapper {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+    ul li {
+        background-image: url(sqpurple.gif);
+        background-repeat: no-repeat;
+        background-position: 0px 5px;
+        padding-left: 14px;
+    }
+
+a {
+    text-decoration: none;
+    font-size: large;
+}
+
+    a:link {
+        color: #000000;
+    }
+
+    a:visited {
+        color: #0026ff;
+    }
+
+    a:hover {
+        color: #ff0000;
+    }
+
+    a:active {
+        color: #0000FF;
+    }
+
+.tdmargin {
+    position: fixed;
+}
+
+
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-bottom:1px solid;
+    border-color:black;
+    text-align:left;
+}
+.thpos{
+    position:absolute;
+    max-width:80%;
+    background-color:#c2bdbd;
+}
+
+th,td{
+    overflow:hidden;
+    width:100px;
+    border-spacing:0px 0px;
+    
+    max-height:10px;
+}
+
+.td20 {
+    width:20px;
+}
+.td30{
+    width:30px;
+}

@@ -1,0 +1,1 @@
+﻿SELECT * FROM BORROW Where Borrow.PersonId = Borrower.PersonId

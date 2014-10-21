@@ -1,0 +1,49 @@
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\My Documents\Kurser\Programmering för webben (Web programming)\Exempel\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\Users\David\Google Drive\LibSysFiveTier\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Visual Studio 2012\Projects\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Visual Studio 2013\Projects\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\LibrarySystemNew\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\bin\Debug\LibrarySystem.DAL.pdb
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.dll
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\bin\Debug\LibrarySystem.DTO.pdb
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.dll
+C:\Users\Huggan\Documents\Lib2014\LibrarySystem.DAL\obj\Debug\LibrarySystem.DAL.pdb
