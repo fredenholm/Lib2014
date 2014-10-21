@@ -279,6 +279,11 @@ namespace LibrarySystem.BL
             show20List.AddRange(BookList.GetRange(index, count));
             return show20List;
         }
+
+        public static void UpdateBook(string ISBN,string Title,int SignId, string PublicationYear,string Publisher, int LibNo) 
+        {
+            LibraryDataAccess.UpdateBook(ISBN, Title, SignId, PublicationYear, Publisher, LibNo);
+        }
         public bool Update()
         {
             bool updateFlag = true;

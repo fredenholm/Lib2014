@@ -10,70 +10,61 @@
 namespace LibrarySystem {
     
     
-    public partial class WebForm11 {
+    public partial class WebForm13 {
         
         /// <summary>
-        /// PersonID control.
+        /// ISBN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PersonID;
+        protected global::System.Web.UI.WebControls.Label ISBN;
         
         /// <summary>
-        /// BFN control.
+        /// BookTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BFN;
+        protected global::System.Web.UI.WebControls.TextBox BookTitle;
         
         /// <summary>
-        /// BLN control.
+        /// SignId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BLN;
+        protected global::System.Web.UI.WebControls.TextBox SignId;
         
         /// <summary>
-        /// Adress control.
+        /// PublicationYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Adress;
+        protected global::System.Web.UI.WebControls.TextBox PublicationYear;
         
         /// <summary>
-        /// Telno control.
+        /// Publisher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Telno;
+        protected global::System.Web.UI.WebControls.TextBox Publisher;
         
         /// <summary>
-        /// CategoryId control.
+        /// LibNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CategoryId;
-        
-        /// <summary>
-        /// errorlabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorlabel;
+        protected global::System.Web.UI.WebControls.TextBox LibNo;
         
         /// <summary>
         /// createBtn control.

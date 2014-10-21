@@ -9,20 +9,20 @@ using LibrarySystem.DTO;
 
 namespace LibrarySystem
 {
-    public partial class WebForm10 : System.Web.UI.Page
+    public partial class WebForm12 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                //rptLoans.DataSource = Borrow.getBorrowerBooks(Session["rptborrowersloans"] as string);
-                //rptLoans.DataBind();
+                rptLoans.DataSource = Borrow.getBorrowerBooks(Session["personid"] as string);
+                rptLoans.DataBind();
             }
         }
 
         protected void Renew_Command(object sender, CommandEventArgs e)
         {
-            Session["rptborrowersloans"] = e.CommandArgument;
+            Session["personid"] = e.CommandArgument;
             BL.Borrower.RenewLoan(Session["rptborrowersloans"] as string);
         }
 

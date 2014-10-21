@@ -40,6 +40,15 @@ namespace LibrarySystem
 
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
+           bool Value = Borrower.haveloans(PersonID.Text);
+           if (Value == true)
+           {
+               errorlabel.Text = "The Borrower does still have loans";
+           }
+           else
+           {
+               Response.Redirect("AdminBorrowers.aspx");
+           }
 
         }
     }

@@ -32,7 +32,7 @@
         </HeaderTemplate>
         
     <ItemTemplate>          
-    <table             
+    <table>             
         <td><%#Eval("PersonId") %></td  >                
         <td><%#Eval("FirstName") %></td>                 
         <td><%#Eval("LastName") %></td >

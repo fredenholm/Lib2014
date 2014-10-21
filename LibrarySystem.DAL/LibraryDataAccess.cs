@@ -140,6 +140,26 @@ namespace LibrarySystem.DAL
             }
             return dtoISBNList;
         }
+        public static void UpdateBook(string ISBN, string Title, int SignId, string PublicationYear, string Publisher, int LibNo)
+        {
+            string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("UPDATE BOOK SET Title='" +title  + "',SignId='" + SignId + "',PublicationYear='" + PublicationYear + "',Publisher'" + Publisher + "',LibNo'" + LibNo + "' WHERE ISBN='" + ISBN + "'", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public static string name;
         public static List<AuthorDTO> getAuthorName(List<string> authorlist)
         {
@@ -708,6 +728,61 @@ namespace LibrarySystem.DAL
             {
                 con.Close();
             }
+        }
+        public static void DeleteBorrower(string personId)
+        {
+            string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("Delete from USR where PersonId ='" + personId + "'; Delete From BORROWER Where PersonId ='" + personId + "';", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static bool haveloans( string personid)
+        {
+            bool loans;
+            int number=0;
+            string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT PersonId, COUNT(*) AS COUNT FROM BORROW WHERE BORROW.PersonId = '" + personid + "' GROUP BY PersonId HAVING COUNT(*) > 0", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    number = (int)dar["COUNT"];
+                }
+                if (number == 0)
+                {
+                    loans = false;
+                }
+                else
+                {
+                    loans = true;
+                }
+            }
+            catch (Exception er)
+            {
+                throw er;
+
+            }
+            finally
+            {
+                con.Close();
+                
+            }
+            return loans;
         }
         public static string PersonIdExists(string PersonId)
         {
