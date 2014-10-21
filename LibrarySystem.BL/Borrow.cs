@@ -168,6 +168,10 @@ namespace LibrarySystem.BL
             number = LibraryDataAccess.getnumberOfBorrow(PersonId);
             return number;
         }
+        public static void renewLoan(string PersonId, string Barcode)
+        {
+            LibraryDataAccess.RenewLoan(PersonId, Barcode);
+        }
       
         #endregion
         }

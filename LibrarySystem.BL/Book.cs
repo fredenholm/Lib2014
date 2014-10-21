@@ -275,6 +275,10 @@ namespace LibrarySystem.BL
                 count = BookList.Count;
                 disableBtn = "next";
             }
+            else
+            {
+                count = 20;
+            }
             show20List.Clear();
             show20List.AddRange(BookList.GetRange(index, count));
             return show20List;

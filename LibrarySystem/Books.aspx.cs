@@ -56,5 +56,10 @@ namespace LibrarySystem
                 PreviousBtn.Enabled = true;
             }
         }
+
+        protected void LoanButton_Command(object sender, CommandEventArgs e)
+        {
+
+        }
     }
 }
