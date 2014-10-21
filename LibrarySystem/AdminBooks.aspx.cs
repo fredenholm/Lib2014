@@ -62,5 +62,11 @@ namespace LibrarySystem
             rptAdminBooks.DataBind();
             disablePrevBtn();
         }
+
+        protected void Copys_Command(object sender, CommandEventArgs e)
+        {
+            Session["AdminBookISBN"] = e.CommandArgument;
+            Response.Redirect("AddBook.aspx");
+        }
     }
 }

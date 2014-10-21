@@ -86,6 +86,7 @@
     <Content Include="ViewLoans.aspx" />
     <Content Include="AdminBooks.aspx" />
     <Content Include="EditAdminBooks.aspx" />
+    <Content Include="AddBook.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminAuthor.aspx.cs">
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="EditAdminBooks.aspx.designer.cs">
       <DependentUpon>EditAdminBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddBook.aspx.cs">
+      <DependentUpon>AddBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddBook.aspx.designer.cs">
+      <DependentUpon>AddBook.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -58,6 +58,7 @@
     <Compile Include="BookDTO.cs" />
     <Compile Include="borrowDTO.cs" />
     <Compile Include="BorrowerDTO.cs" />
+    <Compile Include="CopyDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDTO.cs" />
   </ItemGroup>
