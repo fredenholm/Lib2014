@@ -33,7 +33,8 @@ namespace LibrarySystem
 
         protected void Editbut_Command(object sender, CommandEventArgs e)
         {
-
+            Session["rptAdminBorrowers"] = e.CommandArgument;
+            Response.Redirect("EditAdminBorrower.aspx");
         }
 
         protected void PreviousBtn_Click(object sender, EventArgs e)
