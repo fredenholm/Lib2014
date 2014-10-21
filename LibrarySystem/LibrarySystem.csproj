@@ -73,6 +73,7 @@
     <Content Include="EditAdminAuthor.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="style\Styling.css" />
+    <Content Include="ViewLoans.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -168,6 +169,10 @@
     </Compile>
     <Compile Include="addAuthor.aspx.designer.cs">
       <DependentUpon>addAuthor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLoans.aspx.cs">
+      <DependentUpon>ViewLoans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

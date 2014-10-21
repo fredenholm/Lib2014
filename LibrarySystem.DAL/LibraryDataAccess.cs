@@ -527,12 +527,12 @@ namespace LibrarySystem.DAL
 
             return dtoborrowerlist;
         }
-        public static List<BorrowDTO> getBorrowbyPersonId(List<string> personList)
+        public static List<BorrowDTO> getBorrowbyPersonId(string person)
         {
             List<BorrowDTO> dtoborrowerlist = new List<BorrowDTO>();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM BORROW WHERE BORROW.PersonId = '" + personList + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM BORROW WHERE BORROW.PersonId = '" + person + "'", con);
             try
             {
                 con.Open();

@@ -15,8 +15,8 @@ namespace LibrarySystem
         {
             if (!Page.IsPostBack)
             {
-                rptLoans.DataSource = Borrow.getBorrowerBooks(Session["rptborrowersloans"] as string);
-                rptLoans.DataBind();
+                //rptLoans.DataSource = Borrow.getBorrowerBooks(Session["rptborrowersloans"] as string);
+                //rptLoans.DataBind();
             }
         }
 
