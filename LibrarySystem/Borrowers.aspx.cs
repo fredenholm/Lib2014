@@ -10,6 +10,7 @@ namespace LibrarySystem
 {
     public partial class WebForm5 : System.Web.UI.Page
     {
+        public static int repeatcounter;
         protected void Page_Load(object sender, EventArgs e)
         {
             Button loginBtn = (Button)Master.FindControl("LoginBtn");
@@ -29,8 +30,9 @@ namespace LibrarySystem
             if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
             {
                 Repeater rptBorrowBooks = (Repeater)item.FindControl("rptBorrowBooks");
-                rptBorrowBooks.DataSource = Borrow.getBorrowerBooks(Usr.getUserId(Session["Username"] as string));
+                rptBorrowBooks.DataSource = Borrow.getNumberOfLoans(Usr.getUserId(Session["Username"] as string));
                 rptBorrowBooks.DataBind();
+                Borrow.repeatCounter = 0;
             }
         }
 
@@ -41,6 +43,7 @@ namespace LibrarySystem
             {
                 Repeater rptBorrowBooksStatus = (Repeater)item.FindControl("rptBorrowBooksStatus");
                 rptBorrowBooksStatus.DataSource = Borrow.getBorrowStatus(Usr.getUserId(Session["Username"] as string));
+                Borrow.repeatCounter += 1;
                 rptBorrowBooksStatus.DataBind();
             }
         }

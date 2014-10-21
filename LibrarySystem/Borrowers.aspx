@@ -23,17 +23,15 @@
                 <td><%#Eval("Categoryid") %></td><br/>
             </tr>
             <asp:Repeater ID="rptBorrowBooks" runat="server" OnItemDataBound="rptBorrowBooks_ItemDataBound">
-                <HeaderTemplate>
-                    <tr>
+                <ItemTemplate>
+                    <th>
                         <th>ISBN</th>
                         <th>Title</th>
                         <th>SignId</th>
                         <th>PulicationYear</th>
                         <th>Publisher</th>
                         <th>LibNo</th><br />
-                    </tr>
-                </HeaderTemplate>
-                <ItemTemplate>
+                    </th>
                     <tr>
                         <td><%#Eval("ISBN") %></td>
                         <td><%#Eval("Title") %></td>
@@ -60,7 +58,7 @@
                             <td><%#Eval("personid") %></td>
                             <td><asp:Button ID ="RenewBook" runat="server" Text="Renew Loan" OnClick="RenewBook_Click"/></td>
                         </tr>
-                        <br/>
+                        <br/><br />
                      </ItemTemplate>
                 </asp:Repeater>
                 </ItemTemplate>

@@ -552,7 +552,7 @@ namespace LibrarySystem.DAL
             List<BorrowDTO> dtoborrowerlist = new List<BorrowDTO>();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM BORROW WHERE BORROW.PersonId = '" + person + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT TOP 1 * FROM BORROW WHERE BORROW.PersonId = '" + person + "'", con);
             try
             {
                 con.Open();
@@ -578,6 +578,103 @@ namespace LibrarySystem.DAL
             }
 
             return dtoborrowerlist;
+        }
+        public static int getnumberOfBorrow(string PersonId)
+        {
+            int number = 0;
+            List<string> Barcode = new List<string>();
+            List<BorrowDTO> borrowStatusList = new List<BorrowDTO>();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT PersonId, COUNT(*) AS COUNT FROM BORROW WHERE BORROW.PersonId = '" + PersonId + "' GROUP BY PersonId HAVING COUNT(*) > 0", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    number = (int)dar["COUNT"];
+                }
+            }
+            catch(Exception er)
+            {
+                throw er;
+            }
+            finally{
+                con.Close();
+            }
+            return number;
+        }
+        public static List<BorrowDTO> getBorrowStatus(string PersonId)
+        {
+            int number = 0;
+            List<string> Barcode = new List<string>();
+            List<BorrowDTO> borrowStatusList = new List<BorrowDTO>();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT PersonId, COUNT(*) AS COUNT FROM BORROW WHERE BORROW.PersonId = '" + PersonId + "' GROUP BY PersonId HAVING COUNT(*) > 0", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    number = (int)dar["COUNT"];
+                    dar.Close();
+                    if (number > 1)
+                    {
+                        for (int i = 1; i <= (number); i++)
+                        {
+                            try
+                            {
+                                SqlCommand cmd1 = new SqlCommand("SELECT Barcode FROM (SELECT ROW_NUMBER() OVER (ORDER BY BORROW.ToBeReturnedDate) AS RowNum, * FROM BORROW WHERE PersonId = '" + PersonId + "') sub WHERE RowNum = " + i + ";", con);
+                                dar = cmd1.ExecuteReader();
+                                if (dar.Read())
+                                {
+                                    Barcode.Add(dar["Barcode"] as string);
+                                }
+                                dar.Close();
+                            }
+                            catch (Exception er)
+                            {
+                                throw er;
+                            }
+                            try
+                            {
+                                SqlCommand cmd2 = new SqlCommand("SELECT * FROM BORROW WHERE Barcode = '" + Barcode[i-1] + "'", con);
+                                dar = cmd2.ExecuteReader();
+                                if (dar.Read())
+                                {
+                                    BorrowDTO dto = new BorrowDTO();
+                                    dto.BorrowDate = (DateTime)dar["BorrowDate"];
+                                    dto.ToBeReturnedDate = (DateTime)dar["ToBeReturnedDate"];
+                                    if(!dar.IsDBNull(4))
+                                    {
+                                        dto.ReturnDate = (DateTime)dar["ReturnDate"];
+                                    }
+                                    dto.barcode = dar["barcode"] as string;
+                                    dto.PersonId = dar["personid"] as string;
+                                    borrowStatusList.Add(dto);
+                                }
+                                dar.Close();
+                            }
+                            catch (Exception er)
+                            {
+                                throw er;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return borrowStatusList;
         }
         public static List<BookDTO> getBorrowerBook(string personId)
         {
@@ -611,6 +708,75 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
             return dtoborrowList;
+        }
+        public static List<BookDTO> getNumberOfLoans(string PersonId)
+        {
+            int number = 0;
+            List<string> Barcode = new List<string>();
+            List<BookDTO> booklist = new List<BookDTO>();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT PersonId, COUNT(*) AS COUNT FROM BORROW WHERE BORROW.PersonId = '" + PersonId + "' GROUP BY PersonId HAVING COUNT(*) > 0", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if(dar.Read())
+                {
+                    number = (int)dar["COUNT"];
+                    dar.Close();
+                    if(number > 1)
+                    {
+                        for(int i=1;i<=(number);i++)
+                        {
+                            try
+                            {
+                                SqlCommand cmd1 = new SqlCommand("SELECT Barcode FROM (SELECT ROW_NUMBER() OVER (ORDER BY BORROW.ToBeReturnedDate) AS RowNum, * FROM BORROW WHERE PersonId = '" + PersonId + "') sub WHERE RowNum = " + i + ";", con);
+                                dar = cmd1.ExecuteReader();
+                                if (dar.Read())
+                                {
+                                    Barcode.Add(dar["Barcode"] as string);
+                                }
+                                dar.Close();
+                            }
+                            catch(Exception er)
+                            {
+                                throw er;
+                            }
+                            try
+                            {
+                                SqlCommand cmd2 = new SqlCommand("SELECT * FROM BOOK WHERE BOOK.ISBN = (SELECT ISBN FROM COPY WHERE COPY.Barcode= '" + Barcode[i-1] + "')", con);
+                                dar = cmd2.ExecuteReader();
+                                if (dar.Read())
+                                {
+                                    BookDTO dto = new BookDTO();
+                                    dto.isbnNo = dar["ISBN"] as string;
+                                    dto.title = dar["Title"] as string;
+                                    dto.signId = (int)dar["SignId"];
+                                    dto.publicationYear = dar["PublicationYear"] as string;
+                                    dto.publisher = dar["Publisher"] as string;
+                                    dto.libNumber = (int)dar["LibNo"];
+                                    booklist.Add(dto);
+                                }
+                                dar.Close();
+                            }
+                            catch(Exception er)
+                            {
+                                throw er;
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return booklist;
         }
         public static List<UserDTO> getAllUsersDAL()
         {
