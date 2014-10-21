@@ -83,6 +83,7 @@
     <Content Include="AuthorDetails.aspx" />
     <Content Include="Borrowers.aspx" />
     <Content Include="addAuthor.aspx" />
+    <Content Include="EditAdminBorrower.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminAuthor.aspx.cs">
@@ -173,6 +174,13 @@
     <Compile Include="ViewLoans.aspx.cs">
       <DependentUpon>ViewLoans.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditAdminBorrower.aspx.cs">
+      <DependentUpon>EditAdminBorrower.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditAdminBorrower.aspx.designer.cs">
+      <DependentUpon>EditAdminBorrower.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

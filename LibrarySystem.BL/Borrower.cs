@@ -226,6 +226,12 @@ namespace LibrarySystem.BL
         {
             LibraryDataAccess.createBorrower(PersonId, Firstname, Lastname, address, Telno, catergoryId);
         }
+
+        public static void UpdateBorrower(string PersonId, string Firstname, string Lastname, string address, string Telno, int catergoryId)
+        {
+
+            LibraryDataAccess.updateBorrower(PersonId, Firstname, Lastname, address, Telno, catergoryId);
+        }
         #endregion  //Public methods
     }  //End Class
 }

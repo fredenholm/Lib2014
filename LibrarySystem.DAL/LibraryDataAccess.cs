@@ -670,6 +670,26 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
         }
+        public static void updateBorrower(string PersonId, string Firstname, string Lastname, string address, string Telno, int catergoryId)
+        { 
+        string _connectionString = DataSource.GetConnectionString("library2");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("UPDATE BORROWER SET FirstName='" + Firstname + "',LastName='" + Lastname + "',Telno='" + Telno + "',Address='"+address+"',CategoryId='"+catergoryId+"' WHERE PersonId='" + PersonId + "'", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+        
+        }
         public static void createBorrower(string personId, string Firstname, string Lastname, string address, string Telno, int categoryId)
         {
             string _connectionString = DataSource.GetConnectionString("library2");
