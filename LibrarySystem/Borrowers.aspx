@@ -45,6 +45,7 @@
                         <tr>
                             <th>Borrow Date</th>
                             <th>To Be Return Date</th>
+                            <th>Return date</th>
                             <th>Barcode</th>
                             <th>Person Id</th><br />
                         </tr>
@@ -54,9 +55,10 @@
                             <td><%#Eval("borrowdate") %></td>
                             <td><%#Eval("tobereturndate") %></td>
                             <td><%#Eval("returndate") %></td>
-                            <td><%#Eval("barcode") %></td>
+                            <td><%#Eval("barcode") %>
                             <td><%#Eval("personid") %></td>
-                            <td><asp:Button ID ="RenewBook" runat="server" Text="Renew Loan" OnClick="RenewBook_Click"/></td>
+                            <td><asp:Button ID="RenewBook" Text="Renew Loan" CommandArgument='<%#Eval("barcode") %>' runat="server" CommandName="Renew" OnCommand="RenewBook_Command" /></td>
+                            <td><asp:Button ID="ReturnBook" Text="Return Book" CommandArgument='<%#Eval("barcode") %>' runat="server" CommandName="Return" OnCommand="ReturnBook_Command" /></td>
                         </tr>
                         <br/><br />
                      </ItemTemplate>

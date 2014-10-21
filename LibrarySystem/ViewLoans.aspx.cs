@@ -22,8 +22,8 @@ namespace LibrarySystem
 
         protected void Renew_Command(object sender, CommandEventArgs e)
         {
-            Session["personid"] = e.CommandArgument;
-            BL.Borrower.RenewLoan(Session["rptborrowersloans"] as string);
+            Session["rptborrowersloans"] = e.CommandArgument;
+            //BL.Borrower.RenewLoan(Session["rptborrowersloans"] as string);
         }
 
         protected void cancelBtn_Click(object sender, EventArgs e)

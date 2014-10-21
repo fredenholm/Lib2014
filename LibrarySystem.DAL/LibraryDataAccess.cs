@@ -49,7 +49,7 @@ namespace LibrarySystem.DAL
             List<AuthorDTO> dtoAidList = new List<AuthorDTO>();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM AUTHOR WHERE aid = " + Aid, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM AUTHOR WHERE aid = '" + Aid + "'", con);
             try
             {
                 con.Open();
@@ -113,7 +113,7 @@ namespace LibrarySystem.DAL
             List<BookDTO> dtoISBNList = new List<BookDTO>();
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM BOOK WHERE ISBN = " + ISBN, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM BOOK WHERE ISBN = '" + ISBN + "'", con);
             try
             {
                 con.Open();
@@ -199,7 +199,7 @@ namespace LibrarySystem.DAL
             //Connect to the database and read all books for given author
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT isbn FROM book_author WHERE aid = " + dto.aId.ToString(), con);
+            SqlCommand cmd = new SqlCommand("SELECT isbn FROM book_author WHERE aid = '" + dto.aId.ToString() + "'", con);
             try
             {
                 string isbn;
@@ -315,7 +315,7 @@ namespace LibrarySystem.DAL
             BookDTO dto = new BookDTO();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM book WHERE isbn = " + isbn, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM book WHERE isbn = '" + isbn + "'", con);
             try
             {
                 con.Open();
@@ -388,7 +388,7 @@ namespace LibrarySystem.DAL
                 itemNo++;
                 isbnListString += str + (itemNo == isbnList.Count ? "')" : "','");
             }
-            SqlCommand cmd = new SqlCommand("SELECT * FROM book WHERE isbn IN ('" + isbnListString, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM book WHERE isbn IN ('" + isbnListString + "')", con);
             try
             {
                 con.Open();
@@ -423,7 +423,7 @@ namespace LibrarySystem.DAL
             BorrowerDTO dto = new BorrowerDTO();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Borrower WHERE PersonId = " + PersonId, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Borrower WHERE PersonId = '" + PersonId + "'", con);
             try
             {
                 con.Open();
@@ -489,7 +489,7 @@ namespace LibrarySystem.DAL
             BorrowDTO dto = new BorrowDTO();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Borrow WHERE PersonId = " + PersonId, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Borrow WHERE PersonId = '" + PersonId + "'", con);
             try
             {
                 con.Open();
@@ -1085,13 +1085,13 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
         }
-        public static void RenewLoan(string PersonId)
+        public static void RenewLoan(string PersonId, string barcode)
         {
-            DateTime today = DateTime.Today;
-            today.AddDays(30);
+            DateTime today = DateTime.Now;
+            today = today.AddDays(30);
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("UPDATE BORROW SET ToBeReturnedDate='" + today + "' WHERE PersonId='" + Person + "'", con);
+            SqlCommand cmd = new SqlCommand("UPDATE BORROW SET ToBeReturnedDate='" + today + "' WHERE PersonId='" + Person + "' AND Barcode='" + barcode + "'", con);
             try
             {
                 con.Open();

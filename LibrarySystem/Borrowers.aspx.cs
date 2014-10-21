@@ -13,17 +13,15 @@ namespace LibrarySystem
         public static int repeatcounter;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Button loginBtn = (Button)Master.FindControl("LoginBtn");
-            loginBtn.Text = "Log out";
-            rptBorrow.DataSource = Borrower.getBorrowerId(Usr.getUserId(Session["Username"] as string));
-            rptBorrow.DataBind();
+            if(!Page.IsPostBack)
+            {
+                Button loginBtn = (Button)Master.FindControl("LoginBtn");
+                loginBtn.Text = "Log out";
+                rptBorrow.DataSource = Borrower.getBorrowerId(Usr.getUserId(Session["Username"] as string));
+                rptBorrow.DataBind();
+            }
+
         }
-
-        protected void RenewBook_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void rptBorrow_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             RepeaterItem item = e.Item;
@@ -46,6 +44,18 @@ namespace LibrarySystem
                 Borrow.repeatCounter += 1;
                 rptBorrowBooksStatus.DataBind();
             }
+        }
+
+        protected void RenewBook_Command(object sender, CommandEventArgs e)
+        {
+            Session["barcode"] = e.CommandArgument;
+            Borrow.renewLoan("19111111-1111",(Session["barcode"] as string));
+            Response.Redirect("Borrowers.aspx");
+        }
+
+        protected void ReturnBook_Command(object sender, CommandEventArgs e)
+        {
+
         }
     }
 }

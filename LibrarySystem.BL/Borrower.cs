@@ -175,9 +175,9 @@ namespace LibrarySystem.BL
                 return value;
             }
         }
-        public static void RenewLoan(string BPersonId)
+        public static void RenewLoan(string PersonId, string Barcode)
         {
-            LibraryDataAccess.RenewLoan(BPersonId);
+            LibraryDataAccess.RenewLoan(PersonId, Barcode);
         }
         public static string disableBtn = "";
         public static List<Borrower> SortBy20(List<Borrower> BookList, string Direction)
