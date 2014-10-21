@@ -27,7 +27,7 @@ namespace LibrarySystem.DTO
             public LoadStatus loadStatus;
             public DateTime BorrowDate;
             public DateTime ToBeReturnedDate;
-            public DateTime ReturnDate;
+            public Nullable<DateTime> ReturnDate;
             public string barcode = null;
             public string PersonId = null;
             public List<string> personList = new List<string>();

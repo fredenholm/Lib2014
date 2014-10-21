@@ -50,7 +50,7 @@ namespace LibrarySystem.BL
             set { _BorrowDTO.barcode = value; }
         }
 
-        public DateTime ReturnDate
+        public Nullable<DateTime> ReturnDate
         {
             get
             {
@@ -110,6 +110,7 @@ namespace LibrarySystem.BL
         #endregion //private methods
 
         #region public methods
+        public static int repeatCounter = 0;
         public static List<Borrow> getBorrowStatus(string personId)
         {
             List<BorrowDTO> dtolist = null;
@@ -119,9 +120,7 @@ namespace LibrarySystem.BL
             }
             else
             {
-                Borrow BorrowObject = new Borrow();
-                BorrowObject.PersonId = personId;
-                dtolist = LibraryDataAccess.getBorrowbyPersonId(BorrowObject.PersonId);
+                dtolist = LibraryDataAccess.getBorrowStatus(personId);
             }
             List<Borrow> results = new List<Borrow>();
             foreach (BorrowDTO dto in dtolist)
@@ -129,7 +128,7 @@ namespace LibrarySystem.BL
                 Borrow item = new Borrow(dto);
                 results.Add(item);
             }
-            return results;
+            return results.GetRange((repeatCounter), 1);
         }
         public static List<Book> getBorrowerBooks(string personId)
         {
@@ -151,7 +150,25 @@ namespace LibrarySystem.BL
             }
             return results;
            }
-       
+        public static List<Book> getNumberOfLoans(string personId)
+        {
+            List<BookDTO> dtolist= null;
+            dtolist = LibraryDataAccess.getNumberOfLoans(personId);
+            List<Book> results = new List<Book>();
+            foreach(BookDTO dto in dtolist)
+            {
+                Book item = new Book(dto);
+                results.Add(item);
+            }
+            return results;
+        }
+        public static int returnNumberOfBorrow(string PersonId)
+        {
+            int number;
+            number = LibraryDataAccess.getnumberOfBorrow(PersonId);
+            return number;
+        }
+      
         #endregion
         }
 }
