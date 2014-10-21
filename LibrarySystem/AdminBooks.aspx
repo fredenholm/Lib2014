@@ -36,10 +36,8 @@
         <td><%#Eval("PublicationYear") %></td >                 
         <td><%#Eval("Publisher") %></td>        
         <td><%#Eval("LibNo") %></td>                 
-        <td>
-            <asp:Button ID="Deatils" Text="Edit" CommandArgument='<%#Eval("ISBN") %>' runat="server" CommandName="Deatils" OnCommand="Deatils_Command" />
-
-        </td>
+        <td><asp:Button ID="Deatils" Text="Edit" CommandArgument='<%#Eval("ISBN") %>' runat="server" CommandName="Deatils" OnCommand="Deatils_Command" /></td>
+        <td> <asp:Button ID="Copys" Text="Copys" CommandArgument='<%#Eval("ISBN") %>' runat="server" CommandName="copys" OnCommand="Copys_Command" /></td>
     </table>
              
     <br />

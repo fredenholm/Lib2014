@@ -144,7 +144,7 @@ namespace LibrarySystem.DAL
         {
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("UPDATE BOOK SET Title='" +title  + "',SignId='" + SignId + "',PublicationYear='" + PublicationYear + "',Publisher'" + Publisher + "',LibNo'" + LibNo + "' WHERE ISBN='" + ISBN + "'", con);
+            SqlCommand cmd = new SqlCommand("UPDATE BOOK SET Title='" + Title + "',SignId='" + SignId + "',PublicationYear='" + PublicationYear + "',Publisher='" + Publisher + "',LibNo='" + LibNo + "' WHERE ISBN='" + ISBN + "'", con);
             try
             {
                 con.Open();
@@ -596,11 +596,12 @@ namespace LibrarySystem.DAL
                     number = (int)dar["COUNT"];
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 throw er;
             }
-            finally{
+            finally
+            {
                 con.Close();
             }
             return number;
@@ -641,14 +642,14 @@ namespace LibrarySystem.DAL
                             }
                             try
                             {
-                                SqlCommand cmd2 = new SqlCommand("SELECT * FROM BORROW WHERE Barcode = '" + Barcode[i-1] + "'", con);
+                                SqlCommand cmd2 = new SqlCommand("SELECT * FROM BORROW WHERE Barcode = '" + Barcode[i - 1] + "'", con);
                                 dar = cmd2.ExecuteReader();
                                 if (dar.Read())
                                 {
                                     BorrowDTO dto = new BorrowDTO();
                                     dto.BorrowDate = (DateTime)dar["BorrowDate"];
                                     dto.ToBeReturnedDate = (DateTime)dar["ToBeReturnedDate"];
-                                    if(!dar.IsDBNull(4))
+                                    if (!dar.IsDBNull(4))
                                     {
                                         dto.ReturnDate = (DateTime)dar["ReturnDate"];
                                     }
@@ -721,13 +722,13 @@ namespace LibrarySystem.DAL
             {
                 con.Open();
                 SqlDataReader dar = cmd.ExecuteReader();
-                if(dar.Read())
+                if (dar.Read())
                 {
                     number = (int)dar["COUNT"];
                     dar.Close();
-                    if(number > 1)
+                    if (number > 1)
                     {
-                        for(int i=1;i<=(number);i++)
+                        for (int i = 1; i <= (number); i++)
                         {
                             try
                             {
@@ -739,13 +740,13 @@ namespace LibrarySystem.DAL
                                 }
                                 dar.Close();
                             }
-                            catch(Exception er)
+                            catch (Exception er)
                             {
                                 throw er;
                             }
                             try
                             {
-                                SqlCommand cmd2 = new SqlCommand("SELECT * FROM BOOK WHERE BOOK.ISBN = (SELECT ISBN FROM COPY WHERE COPY.Barcode= '" + Barcode[i-1] + "')", con);
+                                SqlCommand cmd2 = new SqlCommand("SELECT * FROM BOOK WHERE BOOK.ISBN = (SELECT ISBN FROM COPY WHERE COPY.Barcode= '" + Barcode[i - 1] + "')", con);
                                 dar = cmd2.ExecuteReader();
                                 if (dar.Read())
                                 {
@@ -760,7 +761,7 @@ namespace LibrarySystem.DAL
                                 }
                                 dar.Close();
                             }
-                            catch(Exception er)
+                            catch (Exception er)
                             {
                                 throw er;
                             }
@@ -768,7 +769,7 @@ namespace LibrarySystem.DAL
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -857,16 +858,16 @@ namespace LibrarySystem.DAL
             }
         }
         public static void updateBorrower(string PersonId, string Firstname, string Lastname, string address, string Telno, int catergoryId)
-        { 
-        string _connectionString = DataSource.GetConnectionString("library2");
+        {
+            string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("UPDATE BORROWER SET FirstName='" + Firstname + "',LastName='" + Lastname + "',Telno='" + Telno + "',Address='"+address+"',CategoryId='"+catergoryId+"' WHERE PersonId='" + PersonId + "'", con);
+            SqlCommand cmd = new SqlCommand("UPDATE BORROWER SET FirstName='" + Firstname + "',LastName='" + Lastname + "',Telno='" + Telno + "',Address='" + address + "',CategoryId='" + catergoryId + "' WHERE PersonId='" + PersonId + "'", con);
             try
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 throw er;
             }
@@ -874,7 +875,7 @@ namespace LibrarySystem.DAL
             {
                 con.Close();
             }
-        
+
         }
         public static void createBorrower(string personId, string Firstname, string Lastname, string address, string Telno, int categoryId)
         {
@@ -886,7 +887,7 @@ namespace LibrarySystem.DAL
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 throw er;
             }
@@ -914,10 +915,10 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
         }
-        public static bool haveloans( string personid)
+        public static bool haveloans(string personid)
         {
             bool loans;
-            int number=0;
+            int number = 0;
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
             SqlCommand cmd = new SqlCommand("SELECT PersonId, COUNT(*) AS COUNT FROM BORROW WHERE BORROW.PersonId = '" + personid + "' GROUP BY PersonId HAVING COUNT(*) > 0", con);
@@ -946,7 +947,7 @@ namespace LibrarySystem.DAL
             finally
             {
                 con.Close();
-                
+
             }
             return loans;
         }
@@ -984,12 +985,12 @@ namespace LibrarySystem.DAL
             {
                 con.Open();
                 SqlDataReader dar = cmd.ExecuteReader();
-                if(dar.Read())
+                if (dar.Read())
                 {
                     Username = dar["Username"] as string;
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 throw er;
             }
@@ -1009,13 +1010,13 @@ namespace LibrarySystem.DAL
             {
                 con.Open();
                 SqlDataReader dar = cmd.ExecuteReader();
-                if(dar.Read())
+                if (dar.Read())
                 {
                     confirmPassword = dar["Username"] as string;
                     // currently get 0, must get 1 if the plain text PW matches the encrypted PW in the db
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 throw er;
             }
@@ -1027,7 +1028,7 @@ namespace LibrarySystem.DAL
         }
 
         public static void UpdateAuthor(string EFirstname, string ELastName, int EBirthYear, int EAid)
-        { 
+        {
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
             SqlCommand cmd = new SqlCommand("UPDATE AUTHOR SET FirstName='" + EFirstname + "',LastName='" + ELastName + "',BirthYear='" + EBirthYear + "' WHERE AID='" + EAid + "'", con);
@@ -1049,7 +1050,7 @@ namespace LibrarySystem.DAL
         {
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("DELETE FROM Author WHERE Aid='" + aid + "'",con);
+            SqlCommand cmd = new SqlCommand("DELETE FROM Author WHERE Aid='" + aid + "'", con);
             try
             {
                 con.Open();
@@ -1069,7 +1070,7 @@ namespace LibrarySystem.DAL
         {
             string _connectionString = DataSource.GetConnectionString("library2");
             SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("INSERT INTO Author(aid,FirstName,LastName,BirthYear)Values('" + (getLastAuthor() + 1) + "','" + AFN + "','" + ALN + "','" + ABY + "')",con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Author(aid,FirstName,LastName,BirthYear)Values('" + (getLastAuthor() + 1) + "','" + AFN + "','" + ALN + "','" + ABY + "')", con);
             try
             {
                 con.Open();
@@ -1082,7 +1083,7 @@ namespace LibrarySystem.DAL
             finally
             {
                 con.Close();
-            }        
+            }
         }
         public static void RenewLoan(string PersonId)
         {
@@ -1105,5 +1106,103 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
         }
+        public static CopyDTO LoadAllCopys(string barcode)
+        {
+            CopyDTO dto = new CopyDTO();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Copy WHERE Barcode = '" + barcode + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    dto.ISBN = dar["ISBN"] as string;
+                    dto.Barcode = dar["Barcode"] as string;
+                    dto.location = dar["location"] as string;
+                    dto.StatusId = (int)dar["StatusId"];
+                }
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dto;
+        }
+
+        public static List<CopyDTO> GetallCopys()
+        {
+            List<CopyDTO> CopyDTOlist = new List<CopyDTO>();
+
+            //Connect to the database and read all authors
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM BORROWER", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                while (dar.Read())
+                {
+                    CopyDTO dto = new CopyDTO();
+                    dto.ISBN = dar["ISBN"] as string;
+                    dto.Barcode = dar["Barcode"] as string;
+                    dto.location = dar["location"] as string;
+                    dto.StatusId = (int)dar["StatusId"];
+                    dto.loadstatus = LoadStatus.Ghost;  //Since we are not retrieving the isbn-number list
+                    CopyDTOlist.Add(dto);
+                }
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return CopyDTOlist;
+        }
+
+        public static List<CopyDTO> getCopyByISBN(string ISBN)
+        {
+            List<CopyDTO> dtoCopylist = new List<CopyDTO>();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM COPY WHERE COPY.ISBN = '" + ISBN + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    CopyDTO dto = new CopyDTO();
+                    dto.ISBN = dar["ISBN"] as string;
+                    dto.Barcode = dar["Barcode"] as string;
+                    dto.location = dar["location"] as string;
+                    dto.StatusId = (int)dar["StatusId"];
+                    dtoCopylist.Add(dto);
+                }
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return dtoCopylist;
+
+
+
+        }
+
     }
 }
