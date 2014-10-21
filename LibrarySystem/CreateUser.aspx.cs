@@ -27,6 +27,7 @@ namespace LibrarySystem
                     CategoryId = dropdownlist.SelectedIndex + 1;
                     BL.Borrower.CreateBorrower(PersonId.Text, FN.Text, LN.Text, address.Text, Telno.Text, CategoryId);
                     BL.Usr.CreateUser(PersonId.Text, username.Text, password.Text, email.Text, 0);
+                    Response.Redirect("AdminBorrowers.aspx");
                 }
                 else
                 {
@@ -40,7 +41,7 @@ namespace LibrarySystem
 
         protected void cancelBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.UrlReferrer.ToString());
+            Response.Redirect("AdminBorrowers.aspx");
         }
     }
 }

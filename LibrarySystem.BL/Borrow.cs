@@ -139,8 +139,9 @@ namespace LibrarySystem.BL
             }
             else
             {
-                LibraryDataAccess.Person = personId;
-                dtolist = LibraryDataAccess.getBorrowerBook(personId);
+                Borrow BorrowObject = new Borrow();
+                BorrowObject.PersonId = personId;
+                dtolist = LibraryDataAccess.getBorrowerBook(BorrowObject.PersonId);
             }
             List<Book> results = new List<Book>();
             foreach(BookDTO dto in dtolist)

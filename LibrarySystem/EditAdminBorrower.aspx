@@ -21,7 +21,8 @@
             <asp:label runat="server" text="CategoryId: "></asp:label>
             <asp:textbox runat="server" id="CategoryId"></asp:textbox>
             <br />
-
+            <asp:Label runat="server" ID="errorlabel"></asp:Label>
+            <br />
         <asp:Button runat="server" id="createBtn" Text="Accept" OnClick="createBtn_Click" />
         <asp:Button runat="server" ID="cancelBtn" Text="Cancel" OnClick="cancelBtn_Click" />
         <asp:Button runat="server" ID="DeleteBtn" Text="Delete" OnClick="DeleteBtn_Click" />

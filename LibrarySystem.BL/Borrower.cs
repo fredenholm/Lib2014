@@ -161,6 +161,20 @@ namespace LibrarySystem.BL
             }
             return results;
         }
+        public static bool haveloans(string personId)
+        {
+            bool value ;
+            value = LibraryDataAccess.haveloans(personId);
+            if (value == false)
+            {
+                LibraryDataAccess.DeleteBorrower(personId);
+                return value;
+            }
+            else
+            {
+                return value;
+            }
+        }
         public static void RenewLoan(string PersonId, string Barcode)
         {
             LibraryDataAccess.RenewLoan(PersonId, Barcode);

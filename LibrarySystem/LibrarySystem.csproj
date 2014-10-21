@@ -73,7 +73,6 @@
     <Content Include="EditAdminAuthor.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="style\Styling.css" />
-    <Content Include="ViewLoans.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -84,6 +83,9 @@
     <Content Include="Borrowers.aspx" />
     <Content Include="addAuthor.aspx" />
     <Content Include="EditAdminBorrower.aspx" />
+    <Content Include="ViewLoans.aspx" />
+    <Content Include="AdminBooks.aspx" />
+    <Content Include="EditAdminBooks.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminAuthor.aspx.cs">
@@ -171,16 +173,33 @@
     <Compile Include="addAuthor.aspx.designer.cs">
       <DependentUpon>addAuthor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewLoans.aspx.cs">
-      <DependentUpon>ViewLoans.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="EditAdminBorrower.aspx.cs">
       <DependentUpon>EditAdminBorrower.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EditAdminBorrower.aspx.designer.cs">
       <DependentUpon>EditAdminBorrower.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLoans.aspx.cs">
+      <DependentUpon>ViewLoans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewLoans.aspx.designer.cs">
+      <DependentUpon>ViewLoans.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBooks.aspx.cs">
+      <DependentUpon>AdminBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBooks.aspx.designer.cs">
+      <DependentUpon>AdminBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditAdminBooks.aspx.cs">
+      <DependentUpon>EditAdminBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditAdminBooks.aspx.designer.cs">
+      <DependentUpon>EditAdminBooks.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
