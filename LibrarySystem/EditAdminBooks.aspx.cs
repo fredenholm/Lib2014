@@ -40,7 +40,8 @@ namespace LibrarySystem
 
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
-
+            BL.Book.RemoveBook(ISBN.Text);
+            Response.Redirect("AdminBooks.aspx");
         }
     }
 }

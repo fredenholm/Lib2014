@@ -1425,6 +1425,54 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
         }
+        public static void DeleteBook(string ISBN)
+        {
+            List<string> BarcodeList = new List<string>();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd2 = new SqlCommand("SELECT barcode FROM Copy Where ISBN = '" + ISBN + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd2.ExecuteReader();
+                while (dar.Read())
+                {
+                    string Barcode = "";
+                    Barcode = dar["barcode"] as string;
+                    BarcodeList.Add(Barcode);
+                }
+                dar.Close();
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            for (int j = 0; j < BarcodeList.Count(); j++)
+            {
+                SqlCommand cmd3 = new SqlCommand("Delete From BORROW Where Barcode ='" + BarcodeList[j] + "'", con);
+                try
+                {
+                    cmd3.ExecuteNonQuery();
+                }
+                catch (Exception er)
+                {
+                    throw er;
+                }
+            }
+            SqlCommand cmd = new SqlCommand("Delete from COPY where ISBN ='" + ISBN + "'; Delete from BOOK_AUTHOR where ISBN ='" + ISBN + "'; Delete from BOOK where ISBN='" + ISBN + "'", con);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally 
+            {
+                con.Close();
+            }
+        }
     }
 }
 

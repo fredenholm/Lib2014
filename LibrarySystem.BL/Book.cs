@@ -284,6 +284,10 @@ namespace LibrarySystem.BL
         {
             LibraryDataAccess.UpdateBook(ISBN, Title, SignId, PublicationYear, Publisher, LibNo);
         }
+        public static void RemoveBook(string ISBN)
+        {
+            LibraryDataAccess.DeleteBook(ISBN);
+        }
         public bool Update()
         {
             bool updateFlag = true;
