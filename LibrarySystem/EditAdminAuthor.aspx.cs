@@ -42,7 +42,9 @@ namespace LibrarySystem
 
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
-                
+            BL.Author.RemoveAuthor(Convert.ToInt32(Aid.Text));
+            Response.Redirect("AdminAuthor.aspx");
+   
         }
     }
 }

@@ -180,7 +180,7 @@ namespace LibrarySystem.BL
             LibraryDataAccess.RenewLoan(PersonId, Barcode);
         }
         public static string disableBtn = "";
-        public static List<Borrower> SortBy20(List<Borrower> BookList, string Direction)
+        public static List<Borrower> SortBy20(List<Borrower> BorrowerList, string Direction)
         {
             List<Borrower> show20List = new List<Borrower>();
             if (Direction == "previous")
@@ -196,7 +196,7 @@ namespace LibrarySystem.BL
             {
                 index += 20;
                 disableBtn = "";
-                if ((index + count) >= BookList.Count)
+                if ((index + count) >= BorrowerList.Count)
                 {
                     disableBtn = "next";
                 }
@@ -206,13 +206,13 @@ namespace LibrarySystem.BL
                 index = 0;
                 disableBtn = "previous";
             }
-            if (BookList.Count <= 20)
+            if (BorrowerList.Count <= 20)
             {
-                count = BookList.Count;
+                count = BorrowerList.Count;
                 disableBtn = "next";
             }
             show20List.Clear();
-            show20List.AddRange(BookList.GetRange(index, count));
+            show20List.AddRange(BorrowerList.GetRange(index, count));
             return show20List;
         }
         public bool update()
@@ -245,6 +245,10 @@ namespace LibrarySystem.BL
         {
 
             LibraryDataAccess.updateBorrower(PersonId, Firstname, Lastname, address, Telno, catergoryId);
+        }
+        public static void DeleteBorrower(string PersonId)
+        {
+            LibraryDataAccess.DeleteBorrower(PersonId);
         }
         #endregion  //Public methods
     }  //End Class

@@ -1045,26 +1045,7 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
         }
-        public static void RemoveAuthor(int aid)
-        {
-            string _connectionString = DataSource.GetConnectionString("library2");
-            SqlConnection con = new SqlConnection(_connectionString);
-            SqlCommand cmd = new SqlCommand("DELETE FROM Author WHERE Aid='" + aid + "'", con);
-            try
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception er)
-            {
-                throw er;
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-
+        
         public static void createAuthor(string AFN, string ALN, int ABY)
         {
             string _connectionString = DataSource.GetConnectionString("library2");
@@ -1311,6 +1292,7 @@ namespace LibrarySystem.DAL
             }
             return status;
         }
+
         public static void InsertBook(string ISBN, string Title, int SignId, string PublicationYear, string publisher, int LibNo)
         {
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
@@ -1329,6 +1311,120 @@ namespace LibrarySystem.DAL
             {
                 con.Close();
             }
+    }
+
+        public static bool ChekAuthorbooks(int Aid)
+        {
+            bool haveBooks = false;
+            int books =1;
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM BOOK_AUTHOR WHERE Aid = '" + Aid + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    books = (int)dar["Aid"];
+                }
+                if(books ==0)
+                {
+                    haveBooks = true;
+                }
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return haveBooks;
+        }
+
+        public static void DeleteAuthor(int Aid)
+        {
+            List<string> ISBNList = new List<string>();
+            List<string> BarcodeList = new List<string>();
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT isbn FROM BOOK_AUTHOR WHERE Aid = '" + Aid + "'", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                while (dar.Read())
+                {
+                    string Isbn = "";
+                    Isbn = dar["ISBN"] as string;
+                    ISBNList.Add(Isbn);
+                }
+                dar.Close();
+                for (int i = 0; i < ISBNList.Count(); i++)
+                {
+                    SqlCommand cmd2 = new SqlCommand("SELECT barcode FROM Copy Where ISBN = '" + ISBNList[i] + "'", con);
+                    try
+                    {
+                        dar = cmd2.ExecuteReader();
+                        while (dar.Read())
+                        {
+                            string Barcode = "";
+                            Barcode = dar["barcode"] as string;
+                            BarcodeList.Add(Barcode);
+                        }
+                        dar.Close();
+                        for (int j = 0; j < BarcodeList.Count(); j++)
+                        {
+                            SqlCommand cmd3 = new SqlCommand("Delete From BORROW Where Barcode ='" + BarcodeList[j] + "'", con);
+                            try
+                            {
+                                cmd3.ExecuteNonQuery();
+                            }
+                            catch (Exception er)
+                            {
+                                throw er;
+                            }
+                        }
+                        SqlCommand cmd5 = new SqlCommand("Delete from COPY where ISBN ='" + ISBNList[i] + "'; Delete from BOOK_AUTHOR where ISBN ='" + ISBNList[i] + "'; Delete from BOOK where ISBN='" + ISBNList[i] + "'", con);
+                        try
+                        {
+                            cmd5.ExecuteNonQuery();
+                        }
+                        catch(Exception er)
+                        {
+                            throw er;
+                        }
+                    }
+                    catch(Exception er)
+                    {
+                        throw er;
+                    }
+                }
+                SqlCommand cmd4 = new SqlCommand("Delete from AUTHOR where Aid='" + Aid + "'", con);
+                try
+                {
+                    cmd4.ExecuteNonQuery();
+                }
+                catch (Exception er)
+                {
+                    throw er;
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }
+

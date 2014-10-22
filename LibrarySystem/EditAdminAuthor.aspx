@@ -21,5 +21,5 @@
         <asp:Button runat="server" id="createBtn" Text="Accept" OnClick="createBtn_Click" />
         <asp:Button runat="server" ID="cancelBtn" Text="Cancel" OnClick="cancelBtn_Click" />
         <asp:Button runat="server" ID="DeleteBtn" Text="Delete" OnClick="DeleteBtn_Click" />
-
+    <br />
 </asp:Content>

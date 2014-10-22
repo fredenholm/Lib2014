@@ -16,14 +16,14 @@ namespace LibrarySystem
 
             if (!Page.IsPostBack)
             {
-                List<Borrower> edit = new List<Borrower>();
-                edit = Borrower.getBorrowerId(Session["rptAdminBorrowers"] as string);
-                PersonID.Text = edit[0].PersonId.ToString();
-                BFN.Text = edit[0].firstName;
-                BLN.Text = edit[0].LastName;
-                Telno.Text = edit[0].TelNo;
-                Adress.Text = edit[0].address;
-                CategoryId.Text = edit[0].CategoryID.ToString();
+                Borrower edit = new Borrower();
+                edit = Borrower.getBorrowerId(Session["personid"] as string)[0];
+                PersonID.Text = edit.PersonId.ToString();
+                BFN.Text = edit.firstName;
+                BLN.Text = edit.LastName;
+                Telno.Text = edit.TelNo;
+                Adress.Text = edit.address;
+                CategoryId.Text = edit.CategoryID.ToString();
             }
         }
 
@@ -47,6 +47,7 @@ namespace LibrarySystem
            }
            else
            {
+               Borrower.DeleteBorrower(PersonID.Text);
                Response.Redirect("AdminBorrowers.aspx");
            }
 

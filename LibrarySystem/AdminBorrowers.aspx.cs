@@ -15,7 +15,8 @@ namespace LibrarySystem
         {
             if (!Page.IsPostBack)
             {
-                rptAdminBorrower.DataSource = Borrower.getAll();
+                rptAdminBorrower.DataSource = Borrower.SortBy20(Borrower.getAll(),"");
+                ButtonStatus();
                 rptAdminBorrower.DataBind();
             }
         }
@@ -39,11 +40,33 @@ namespace LibrarySystem
 
         protected void PreviousBtn_Click(object sender, EventArgs e)
         {
-                
+            rptAdminBorrower.DataSource = Borrower.SortBy20(Borrower.getAll(), "previous");
+            rptAdminBorrower.DataBind();
+            ButtonStatus();
         }
 
         protected void NextBtn_Click(object sender, EventArgs e)
         {
+            rptAdminBorrower.DataSource = Borrower.SortBy20(Borrower.getAll(), "next");
+            rptAdminBorrower.DataBind();
+            ButtonStatus();
         }
+        public void ButtonStatus()
+        {
+            if (BL.Borrower.disableBtn == "previous")
+            {
+                PreviousBtn.Enabled = false;
+            }
+            else if (BL.Borrower.disableBtn == "next")
+            {
+                NextBtn.Enabled = false;
+            }
+            else if (BL.Borrower.disableBtn == "")
+            {
+                NextBtn.Enabled = true;
+                PreviousBtn.Enabled = true;
+            }
+        }
+
     }
 }
