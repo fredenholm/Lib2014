@@ -74,8 +74,7 @@ namespace LibrarySystem.DAL
             }
             return dtoAidList;
         }
-        public static string title;
-        public static List<BookDTO> getBookTitle(List<string> booklist)
+        public static List<BookDTO> getBookTitle(string title)
         {
             List<BookDTO> dtobooklist = new List<BookDTO>();
             string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
@@ -1311,6 +1310,25 @@ namespace LibrarySystem.DAL
                 con.Close();
             }
             return status;
+        }
+        public static void InsertBook(string ISBN, string Title, int SignId, string PublicationYear, string publisher, int LibNo)
+        {
+            string _connectionString = DataSource.GetConnectionString("library2");  // Make possible to define and use different connectionstrings 
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [BOOK]([ISBN],[Title],[SignId],[PublicationYear],[Publisher],[LibNo])VALUES('" + ISBN + "','" + Title + "','" + SignId + "','" + PublicationYear + "','" + publisher + "','" + LibNo + "')", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception er)
+            {
+                throw er;
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

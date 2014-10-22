@@ -30,7 +30,7 @@ namespace LibrarySystem
 
         protected void AddButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("NewBook.aspx");
         }
 
         public void disablePrevBtn()

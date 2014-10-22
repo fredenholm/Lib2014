@@ -216,11 +216,7 @@ namespace LibrarySystem.BL
             }
             else
             {
-                // This method retrieves a list of all books in the library system
-                LibraryDataAccess.title = Title;
-                //Fetch the correct AuthorDTO object and connect an Author object for it
-                Book Bookobject = new Book();
-                dtoList = LibraryDataAccess.getBookTitle(Bookobject.TitleList);
+                dtoList = LibraryDataAccess.getBookTitle(Title);
             }
             List<Book> results = new List<Book>();
             foreach (BookDTO dto in dtoList)
@@ -308,6 +304,10 @@ namespace LibrarySystem.BL
                 //Do some error-log functionality with ex.Data
             }
             return updateFlag;
+        }
+        public static void insertBook(string ISBN, string Title, int SignId, string PublicationYear,string publisher, int LibNo)
+        {
+            LibraryDataAccess.InsertBook(ISBN, Title, SignId, PublicationYear, publisher, LibNo);
         }
         #endregion //public methods
     }

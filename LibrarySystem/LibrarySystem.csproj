@@ -72,6 +72,7 @@
     <Content Include="CreateUser.aspx" />
     <Content Include="EditAdminAuthor.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="NewBook.aspx" />
     <Content Include="style\Styling.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewBook.aspx.cs">
+      <DependentUpon>NewBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewBook.aspx.designer.cs">
+      <DependentUpon>NewBook.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page.Master.cs">
       <DependentUpon>Page.Master</DependentUpon>
