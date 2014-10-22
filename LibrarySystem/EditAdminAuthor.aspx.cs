@@ -15,6 +15,7 @@ namespace LibrarySystem
         {
             if (!Page.IsPostBack)
             {
+                confirmButton.Visible=false;
                 List<Author> edit = new List<Author>();
                 edit = Author.getAuthorByAid(Session["AuthorId"] as string);
                 Aid.Text =edit[0].AId.ToString();
@@ -42,7 +43,14 @@ namespace LibrarySystem
 
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
-                
+            int AID = Convert.ToInt32(Aid.Text);
+            BL.Author.RemoveAuthor(AID);
+   
+        }
+
+        protected void confirmButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -21,5 +21,7 @@
         <asp:Button runat="server" id="createBtn" Text="Accept" OnClick="createBtn_Click" />
         <asp:Button runat="server" ID="cancelBtn" Text="Cancel" OnClick="cancelBtn_Click" />
         <asp:Button runat="server" ID="DeleteBtn" Text="Delete" OnClick="DeleteBtn_Click" />
-
+    <br />
+    <asp:Label runat="server" ID="ErrorLabel"></asp:Label>
+    <asp:Button runat="server" ID="confirmButton" text="Confirm" OnClick="confirmButton_Click" />
 </asp:Content>

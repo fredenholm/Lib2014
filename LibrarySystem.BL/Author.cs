@@ -210,6 +210,10 @@ namespace LibrarySystem.BL
         {
             LibraryDataAccess.createAuthor(FirstName, Lastname, BirthYear);
         }
+        public static void RemoveAuthor(int aid)
+        {
+            LibraryDataAccess.DeleteAuthor(aid);
+        }
 
         public bool Update()
         {
